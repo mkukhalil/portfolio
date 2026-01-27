@@ -26,64 +26,124 @@ export default function Home() {
       <Navbar />
 
       {/* Hero Section */}
-      <section id="hero" className="h-screen flex items-center justify-center relative px-6">
-        <div className="max-w-4xl mx-auto text-center z-10">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="flex flex-col items-center"
-          >
-            <div className="relative mb-8">
-              <div className="absolute inset-0 bg-primary/20 blur-3xl rounded-full scale-150" />
-              <img 
-                src="/khalil.png" 
-                alt="Khalil" 
-                className="w-48 h-48 md:w-64 md:h-64 rounded-full object-cover border-4 border-white/10 relative z-10 shadow-2xl"
-                data-testid="img-khalil"
-              />
-            </div>
-            
-            <h2 className="text-2xl md:text-3xl font-display font-bold mb-2 tracking-tight">
-              hey its khalil.
-            </h2>
-            <h1 className="text-4xl md:text-6xl font-display font-bold mb-8 tracking-tighter">
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-white/40">
-                Full stack developer
-              </span>
-            </h1>
-            
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <ScrollLink
-                to="projects"
-                smooth={true}
-                duration={500}
-                className="px-8 py-3 bg-primary text-primary-foreground rounded-full font-bold hover-elevate transition-colors cursor-pointer"
-                data-testid="link-view-work"
-              >
-                View My Work
-              </ScrollLink>
-              <ScrollLink
-                to="contact"
-                smooth={true}
-                duration={500}
-                className="px-8 py-3 bg-white/5 hover:bg-white/10 border border-white/10 rounded-full font-bold transition-colors cursor-pointer"
-                data-testid="link-contact-me"
-              >
-                Contact Me
-              </ScrollLink>
-            </div>
-          </motion.div>
-        </div>
+      <section
+  id="hero"
+  className="min-h-screen flex items-center justify-center relative px-6 overflow-hidden"
+>
+  <div className="relative w-full max-w-5xl mx-auto z-10 flex flex-col items-center">
+    {/* IMAGE */}
+    <motion.div
+      whileHover={{ scale: 1.04 }}
+      transition={{ type: "spring", stiffness: 120 }}
+      className="relative mt-20"
+    >
+      <img
+        src="/khalil.png"
+        alt="Khalil"
+        className="
+          w-36 h-56
+          sm:w-40 sm:h-60
+          md:w-64 md:h-80
+          lg:w-50 lg:h-[19rem]
+          object-cover
+          relative z-10
+          shadow-[0_30px_80px_rgba(0,0,0,0.55)]
+          border-4 border-white
+          rounded-t-full rounded-b-none
+        "
+        data-testid="img-khalil"
+      />
+    </motion.div>
 
-        <motion.div
-          animate={{ y: [0, 10, 0] }}
-          transition={{ duration: 2, repeat: Infinity }}
-          className="absolute bottom-10 left-1/2 -translate-x-1/2 text-muted-foreground/50"
-        >
-          <ArrowDown className="w-6 h-6" />
-        </motion.div>
-      </section>
+    {/* TEXT OVERLAYING IMAGE */}
+    <div className="relative -mt-12 md:-mt-20 text-center z-20 space-y-4 md:space-y-6 px-4">
+  {/* Greeting */}
+  <h1 className="
+    text-xl md:text-2xl lg:text-3xl
+    uppercase tracking-widest
+    text-white/90
+    bg-black/20 backdrop-blur-sm
+    px-4 py-2
+    rounded-lg
+    font-display font-semibold
+    drop-shadow-lg
+  ">
+    Hey, I’m Khalil
+  </h1>
+
+  {/* Main Title */}
+  <h1 className="
+    text-3xl md:text-5xl lg:text-6xl
+    font-display font-extrabold
+    tracking-tight leading-tight
+    text-white
+    bg-black/30 backdrop-blur-md
+    px-6 py-3
+    rounded-xl
+    drop-shadow-2xl
+  ">
+    Full-Stack Developer
+  </h1>
+
+  {/* Subtitle */}
+  <p className="
+    max-w-xl mx-auto
+    text-white/80
+    md:text-lg lg:text-xl
+    bg-black/20 backdrop-blur-sm
+    px-4 py-2 rounded-lg
+    drop-shadow-lg
+  ">
+    I build scalable, modern web applications with clean architecture,
+    strong logic, and production-ready code.
+  </p>
+
+  {/* CTA Buttons */}
+  <div className="flex flex-col sm:flex-row gap-4 justify-center mt-6">
+    <ScrollLink
+      to="projects"
+      smooth
+      duration={500}
+      className="
+        px-8 py-3 rounded-full font-semibold
+        bg-primary text-primary-foreground
+        hover:scale-[1.05] hover:shadow-lg
+        transition-all cursor-pointer
+      "
+    >
+      View My Work
+    </ScrollLink>
+
+    <ScrollLink
+      to="contact"
+      smooth
+      duration={500}
+      className="
+        px-8 py-3 rounded-full font-semibold
+        border border-white/15
+        bg-white/5 hover:bg-white/10
+        hover:scale-[1.05]
+        transition-all cursor-pointer
+      "
+    >
+      Contact Me
+    </ScrollLink>
+  </div>
+</div>
+
+  </div>
+
+  {/* SCROLL INDICATOR */}
+  <motion.div
+    animate={{ y: [0, 10, 0] }}
+    transition={{ duration: 2, repeat: Infinity }}
+    className="absolute bottom-8 left-1/2 -translate-x-1/2 text-white/40"
+  >
+    <ArrowDown className="w-6 h-6" />
+  </motion.div>
+</section>
+
+
 
       {/* About Section */}
       <section id="about" className="py-24 px-6 relative">

@@ -79,3 +79,7 @@
 .text-gradient-primary {
   @apply bg-clip-text text-transparent bg-gradient-to-r from-primary via-primary/80 to-blue-500;
 }
+.text-shadow-lg {
+  text-shadow: 4px 4px 12px rgba(0, 0, 0, 0.85);
+}
+

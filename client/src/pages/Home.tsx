@@ -32,28 +32,34 @@ export default function Home() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
+            className="flex flex-col items-center"
           >
-            <h2 className="text-xl md:text-2xl font-mono text-primary mb-4 tracking-wide">
-              HELLO, I AM A
+            <div className="relative mb-8">
+              <div className="absolute inset-0 bg-primary/20 blur-3xl rounded-full scale-150" />
+              <img 
+                src="/khalil.png" 
+                alt="Khalil" 
+                className="w-48 h-48 md:w-64 md:h-64 rounded-full object-cover border-4 border-white/10 relative z-10 shadow-2xl"
+                data-testid="img-khalil"
+              />
+            </div>
+            
+            <h2 className="text-2xl md:text-3xl font-display font-bold mb-2 tracking-tight">
+              hey its khalil.
             </h2>
-            <h1 className="text-5xl md:text-7xl lg:text-8xl font-display font-bold mb-6 tracking-tighter">
-              FULLSTACK
-              <br />
+            <h1 className="text-4xl md:text-6xl font-display font-bold mb-8 tracking-tighter">
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-white/40">
-                DEVELOPER
+                Full stack developer
               </span>
             </h1>
-            <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-10 leading-relaxed">
-              Crafting digital experiences with precision and passion. 
-              Specializing in modern web technologies and minimalist design.
-            </p>
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <ScrollLink
                 to="projects"
                 smooth={true}
                 duration={500}
-                className="px-8 py-3 bg-primary text-primary-foreground rounded-full font-bold hover:bg-primary/90 transition-colors cursor-pointer"
+                className="px-8 py-3 bg-primary text-primary-foreground rounded-full font-bold hover-elevate transition-colors cursor-pointer"
+                data-testid="link-view-work"
               >
                 View My Work
               </ScrollLink>
@@ -62,6 +68,7 @@ export default function Home() {
                 smooth={true}
                 duration={500}
                 className="px-8 py-3 bg-white/5 hover:bg-white/10 border border-white/10 rounded-full font-bold transition-colors cursor-pointer"
+                data-testid="link-contact-me"
               >
                 Contact Me
               </ScrollLink>

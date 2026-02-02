@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 
 export function MeshBackground() {
   return (
-    <div className="fixed inset-0 z-[-1] overflow-hidden pointer-events-none">
+    <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
       {/* Primary Glow */}
       <motion.div
         animate={{
@@ -36,12 +36,14 @@ export function MeshBackground() {
       />
 
       {/* Grid Overlay */}
-      <div 
-        className="absolute inset-0 opacity-[0.03]"
+      <div
+        className="absolute inset-0 opacity-[0.2]"
         style={{
-          backgroundImage: `linear-gradient(to right, #ffffff 1px, transparent 1px),
-                           linear-gradient(to bottom, #ffffff 1px, transparent 1px)`,
-          backgroundSize: '4rem 4rem'
+          backgroundImage: `linear-gradient(to right, #ffffff 2px, transparent 2px),
+                           linear-gradient(to bottom, #ffffff 2px, transparent 2px)`,
+          backgroundSize: '2.5rem 2.5rem',
+          maskImage: 'radial-gradient(ellipse 40% 50% at 50% 50%, #000 10%, transparent 80%)',
+          WebkitMaskImage: 'radial-gradient(ellipse 40% 50% at 50% 50%, #000 10%, transparent 80%)'
         }}
       />
     </div>

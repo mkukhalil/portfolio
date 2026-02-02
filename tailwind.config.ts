@@ -96,10 +96,15 @@ export default {
           from: { height: "var(--radix-accordion-content-height)" },
           to: { height: "0" },
         },
+         "mesh-pulse": {
+      "0%, 100%": { opacity: "0.6", transform: "scale(1) translate(0, 0)" },
+      "50%": { opacity: "0.8", transform: "scale(1.05) translate(10px, 5px)" },
+    },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+        "mesh-pulse": "mesh-pulse 8s ease-in-out infinite",
       },
     },
   },

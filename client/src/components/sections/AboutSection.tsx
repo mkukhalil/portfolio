@@ -13,10 +13,10 @@ export function AboutSection() {
           className="w-full h-full"
         >
           <path
-            d="M 1000 200 C 800 550, 650 550, 500 200 C 350 -100, 200 -100, 0 200"
+            d="M 1100 -300 C 980 200, 750 300, 550 200 C 350 50, 200 50, 0 200"
             fill="none"
             stroke="hsl(var(--primary))"
-            style={{ strokeWidth: "0.8rem" }}
+            style={{ strokeWidth: "0.5rem" }}
             strokeLinecap="round"
           />
         </svg>

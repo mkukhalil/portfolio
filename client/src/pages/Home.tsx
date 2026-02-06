@@ -15,8 +15,8 @@ export default function Home() {
       <Navbar />
       <HeroSection />
       <AboutSection />
+      <ProjectsSection />
       <SkillsSection skills={skills || []} isLoading={skillsLoading} />
-      <ProjectsSection projects={projects || []} isLoading={projectsLoading} />
       <ContactSection />
 
       {/* Footer */}

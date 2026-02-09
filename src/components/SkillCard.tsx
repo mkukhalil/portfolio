@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { type Skill } from "@shared/schema";
+import { type Skill } from "@/lib/schema";
 
 interface SkillCardProps {
   skill: Skill;
@@ -20,7 +20,7 @@ export function SkillCard({ skill, index }: SkillCardProps) {
           <span className="font-display font-semibold text-lg">{skill.name}</span>
           <span className="text-sm text-primary font-mono">{skill.proficiency}%</span>
         </div>
-        
+
         <div className="h-2 w-full bg-black/50 rounded-full overflow-hidden">
           <motion.div
             initial={{ width: 0 }}

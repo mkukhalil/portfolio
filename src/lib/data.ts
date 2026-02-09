@@ -1,4 +1,4 @@
-import { type Project, type Skill } from "@shared/schema";
+import { type Project, type Skill } from "@/lib/schema";
 
 export const projects: Project[] = [
     {

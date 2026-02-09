@@ -1,6 +1,6 @@
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { insertMessageSchema, type InsertMessage } from "@shared/schema";
+import { insertMessageSchema, type InsertMessage } from "@/lib/schema";
 import { useContactForm } from "@/hooks/use-portfolio";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -38,7 +38,7 @@ export function ContactForm() {
     >
       <div className="bg-card/50 backdrop-blur-sm border border-white/10 rounded-2xl p-8 shadow-2xl">
         <h3 className="text-2xl font-display font-bold mb-6 text-center">Get In Touch</h3>
-        
+
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
             <FormField
@@ -48,17 +48,17 @@ export function ContactForm() {
                 <FormItem>
                   <FormLabel>Name</FormLabel>
                   <FormControl>
-                    <Input 
-                      placeholder="Your name" 
+                    <Input
+                      placeholder="Your name"
                       className="bg-background/50 border-white/10 focus:border-primary/50 transition-colors"
-                      {...field} 
+                      {...field}
                     />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
               )}
             />
-            
+
             <FormField
               control={form.control}
               name="email"
@@ -66,17 +66,17 @@ export function ContactForm() {
                 <FormItem>
                   <FormLabel>Email</FormLabel>
                   <FormControl>
-                    <Input 
-                      placeholder="hello@example.com" 
+                    <Input
+                      placeholder="hello@example.com"
                       className="bg-background/50 border-white/10 focus:border-primary/50 transition-colors"
-                      {...field} 
+                      {...field}
                     />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
               )}
             />
-            
+
             <FormField
               control={form.control}
               name="message"
@@ -84,19 +84,19 @@ export function ContactForm() {
                 <FormItem>
                   <FormLabel>Message</FormLabel>
                   <FormControl>
-                    <Textarea 
-                      placeholder="Tell me about your project..." 
+                    <Textarea
+                      placeholder="Tell me about your project..."
                       className="min-h-[120px] bg-background/50 border-white/10 focus:border-primary/50 transition-colors"
-                      {...field} 
+                      {...field}
                     />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
               )}
             />
-            
-            <Button 
-              type="submit" 
+
+            <Button
+              type="submit"
               className="w-full bg-primary text-primary-foreground hover:bg-primary/90 transition-all font-semibold"
               disabled={isPending}
             >

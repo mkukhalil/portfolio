@@ -1,5 +1,5 @@
 import { useQuery, useMutation } from "@tanstack/react-query";
-import { type InsertMessage } from "@shared/schema";
+import { type InsertMessage } from "@/lib/schema";
 import { useToast } from "@/hooks/use-toast";
 import { projects, skills } from "@/lib/data";
 

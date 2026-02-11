@@ -100,11 +100,17 @@ export default {
           "0%, 100%": { opacity: "0.6", transform: "scale(1) translate(0, 0)" },
           "50%": { opacity: "0.8", transform: "scale(1.05) translate(10px, 5px)" },
         },
+        shine: {
+          "0%": { transform: "translateX(-100%) skewX(-15deg)", opacity: "0" },
+          "50%": { opacity: "0.5" },
+          "100%": { transform: "translateX(100%) skewX(-15deg)", opacity: "0" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
         "mesh-pulse": "mesh-pulse 8s ease-in-out infinite",
+        shine: "shine 1.5s linear infinite",
       },
     },
   },

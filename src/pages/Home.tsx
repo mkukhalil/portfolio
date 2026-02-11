@@ -4,11 +4,10 @@ import { AboutSection } from "@/components/sections/AboutSection";
 import { SkillsSection } from "@/components/sections/SkillsSection";
 import { ProjectsSection } from "@/components/sections/ProjectsSection";
 import { ContactSection } from "@/components/sections/ContactSection";
-import { useProjects, useSkills } from "@/hooks/use-portfolio";
+import { useProjects } from "@/hooks/use-portfolio";
 
 export default function Home() {
   const { data: projects, isLoading: projectsLoading } = useProjects();
-  const { data: skills, isLoading: skillsLoading } = useSkills();
 
   return (
     <div className="min-h-screen relative bg-black text-foreground">
@@ -16,7 +15,7 @@ export default function Home() {
       <HeroSection />
       <AboutSection />
       <ProjectsSection />
-      <SkillsSection skills={skills || []} isLoading={skillsLoading} />
+      <SkillsSection />
       <ContactSection />
 
       {/* Footer */}

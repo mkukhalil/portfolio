@@ -151,6 +151,38 @@
   width: 60vw;
 }
 
+/* ===== About Section Curve (Responsive, Non-Distorted) ===== */
+.about-curve {
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: translateY(5rem); /* matches previous translate-y-20 */
+}
+
+.about-curve__frame {
+  /* Lock the SVG's aspect ratio so the curve never stretches/squashes */
+  aspect-ratio: 1000 / 400;
+  width: clamp(900px, 120vw, 1700px);
+}
+
+.about-curve__svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* Mobile/tablet: keep the curve visually stable and purely static */
+@media (max-width: 1024px) {
+  .about-curve {
+    transform: translateY(3rem);
+  }
+
+  .about-curve__frame {
+    width: clamp(760px, 170vw, 1200px);
+  }
+}
+
 /* ===== No Scrollbar ===== */
 .no-scrollbar::-webkit-scrollbar {
   display: none;

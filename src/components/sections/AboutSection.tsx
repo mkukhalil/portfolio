@@ -4,22 +4,27 @@ export function AboutSection() {
   return (
     <section className="py-20 relative z-0   overflow-hidden">
       {/* STATIC WAVE BACKGROUND */}
-      <div className="absolute inset-0 z-[-1] flex items-center justify-center translate-y-20   pointer-events-none">
-        <svg
-          width="100%"
-          height="100%"
-          viewBox="0 0 1000 400"
-          preserveAspectRatio="none"
-          className="w-full h-full"
-        >
-          <path
-            d="M 1100 -300 C 980 200, 750 300, 550 200 C 350 50, 200 50, 0 200"
-            fill="none"
-            stroke="hsl(var(--primary))"
-            style={{ strokeWidth: "0.5rem" }}
-            strokeLinecap="round"
-          />
-        </svg>
+      <div
+        className="about-curve absolute inset-0 z-[-1] pointer-events-none"
+        aria-hidden="true"
+      >
+        <div className="about-curve__frame">
+          <svg
+            viewBox="0 0 1000 400"
+            preserveAspectRatio="xMidYMid meet"
+            className="about-curve__svg"
+            focusable="false"
+          >
+            <path
+              d="M 1100 -300 C 980 200, 750 300, 550 200 C 350 50, 200 50, 0 200"
+              fill="none"
+              stroke="hsl(var(--primary))"
+              style={{ strokeWidth: "0.5rem" }}
+              strokeLinecap="round"
+              vectorEffect="non-scaling-stroke"
+            />
+          </svg>
+        </div>
       </div>
 
       <div className="grid md:grid-cols-3 gap-9 containerr mx-auto px-4 ">

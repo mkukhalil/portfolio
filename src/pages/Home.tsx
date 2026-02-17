@@ -4,6 +4,7 @@ import { AboutSection } from "@/components/sections/AboutSection";
 import { SkillsSection } from "@/components/sections/SkillsSection";
 import { ProjectsSection } from "@/components/sections/ProjectsSection";
 import { ContactSection } from "@/components/sections/ContactSection";
+import { Footer } from "@/components/Footer";
 import { useProjects } from "@/hooks/use-portfolio";
 
 export default function Home() {
@@ -18,10 +19,7 @@ export default function Home() {
       <SkillsSection />
       <ContactSection />
 
-      {/* Footer */}
-      <footer className="py-8 px-6 border-t border-white/5 text-center text-sm text-muted-foreground">
-        <p>© {new Date().getFullYear()} Portfolio. Built with React, Tailwind & Framer Motion.</p>
-      </footer>
+      <Footer />
     </div>
   );
 }

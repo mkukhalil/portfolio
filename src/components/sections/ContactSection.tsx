@@ -25,8 +25,8 @@ export function ContactSection() {
                 <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
                 Available for freelance
               </div>
-              <p>Based in New York, NY (Remote friendly)</p>
-              <p>hello@portfolio.dev</p>
+              <p>Based in Islamabad, Pakistan (Remote friendly)</p>
+              <p>mkukhalil1@gmail.com</p>
             </div>
           </motion.div>
           <ContactForm />

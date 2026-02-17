@@ -2,7 +2,7 @@ import { Component, Palette, Server } from "lucide-react";
 
 export function AboutSection() {
   return (
-    <section className="py-20 relative z-0   overflow-hidden">
+    <section id="about" className="py-20 relative z-0   overflow-hidden">
       {/* STATIC WAVE BACKGROUND */}
       <div
         className="about-curve absolute inset-0 z-[-1] pointer-events-none"

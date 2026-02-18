@@ -5,26 +5,44 @@ import { useContactForm } from "@/hooks/use-portfolio";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
-import { Loader2, Send } from "lucide-react";
-import { motion } from "framer-motion";
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "@/components/ui/form";
+import { Loader2 } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+import { useState } from "react";
 
 export function ContactForm() {
   const { mutate, isPending } = useContactForm();
+  const [feedback, setFeedback] = useState<{ type: "success" | "error"; message: string } | null>(null);
 
   const form = useForm<InsertMessage>({
     resolver: zodResolver(insertMessageSchema),
     defaultValues: {
       name: "",
       email: "",
+      category: "Other",
       message: "",
     },
   });
 
   function onSubmit(data: InsertMessage) {
     mutate(data, {
-      onSuccess: () => {
+      onSuccess: (res) => {
         form.reset();
+        setFeedback({ type: "success", message: res.message });
+        setTimeout(() => {
+          setFeedback(null);
+          form.setFocus("name");
+        }, 3000);
+      },
+      onError: (err: Error) => {
+        setFeedback({ type: "error", message: err.message });
       },
     });
   }
@@ -34,13 +52,55 @@ export function ContactForm() {
       initial={{ opacity: 0, x: 20 }}
       whileInView={{ opacity: 1, x: 0 }}
       viewport={{ once: true }}
+      whileHover={{ y: -5 }}
+      transition={{ type: "spring", stiffness: 300, damping: 20 }}
       className="w-full max-w-md mx-auto"
     >
-      <div className="bg-[#071C29] backdrop-blur-sm border border-white/10 rounded-2xl p-6 md:p-8 shadow-2xl">
+      <div className="bg-[#071C29] backdrop-blur-sm border border-white/10 rounded-2xl p-6 md:p-8 shadow-2xl relative overflow-hidden">
         <h3 className="text-2xl font-display font-bold mb-4 text-center">Get In Touch</h3>
 
+        <AnimatePresence>
+          {feedback && (
+            <motion.div
+              key={feedback.message}
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -10 }}
+              className={`absolute top-4 left-1/2 -translate-x-1/2 w-[90%] p-3 rounded-md text-center font-medium z-10 ${feedback.type === "success" ? "bg-green-500 text-white" : "bg-red-500 text-white"
+                }`}
+            >
+              {feedback.message}
+            </motion.div>
+          )}
+        </AnimatePresence>
+
         <Form {...form}>
-          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-2">
+            <FormField
+              control={form.control}
+              name="category"
+              render={({ field }) => (
+                <FormItem className="space-y-3">
+                  <div className="flex flex-wrap gap-2  mb-6">
+                    {["Freelance", "Collaboration", "Other"].map((option) => (
+                      <button
+                        key={option}
+                        type="button"
+                        onClick={() => field.onChange(option)}
+                        className={`px-4 py-1.5 rounded-md text-xs font-medium transition-all border ${field.value === option
+                          ? "bg-white text-black border-white"
+                          : "bg-transparent text-white/70 border-white/20 hover:border-white/40"
+                          }`}
+                      >
+                        {option}
+                      </button>
+                    ))}
+                  </div>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+
             <FormField
               control={form.control}
               name="name"
@@ -95,10 +155,10 @@ export function ContactForm() {
               )}
             />
 
-            <div className="flex justify-end">
+            <div className="flex justify-end pt-2">
               <Button
                 type="submit"
-                className="w-fit px-3 bg-white text-black hover:bg-white/90 transition-all font-semibold"
+                className="w-fit px-2 bg-white text-black hover:bg-white/90 transition-all font-semibold rounded-md"
                 disabled={isPending}
               >
                 {isPending ? (

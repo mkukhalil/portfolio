@@ -6,6 +6,7 @@ import { z } from 'zod';
 const insertMessageSchema = z.object({
     name: z.string().min(1, "Name is required"),
     email: z.string().email("Invalid email address"),
+    category: z.string().default("Other"),
     message: z.string().min(1, "Message is required"),
 });
 
@@ -20,7 +21,7 @@ export default async function handler(
     try {
         // Validate request body
         const validatedData = insertMessageSchema.parse(req.body);
-        const { name, email, message } = validatedData;
+        const { name, email, category, message } = validatedData;
 
         // Check for environment variables
         const gmailUser = process.env.GMAIL_USER;
@@ -47,8 +48,8 @@ export default async function handler(
             from: `"${name}" <${gmailUser}>`,
             to: gmailUser,
             replyTo: email,
-            subject: `New Contact Form Submission from ${name}`,
-            text: `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`,
+            subject: `${name} | ${email} | ${category} | Contact Form Message`,
+            text: `Name: ${name}\nEmail: ${email}\nCategory: ${category}\n\nMessage:\n${message}`,
             html: `
         <div style="font-family: sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; border: 1px solid #e2e8f0; rounded: 8px;">
           <h2 style="color: #0f172a; margin-bottom: 20px; border-bottom: 2px solid #3b82f6; padding-bottom: 10px;">New Contact Form Submission</h2>

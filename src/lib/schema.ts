@@ -4,6 +4,7 @@ import { z } from "zod";
 export const insertMessageSchema = z.object({
     name: z.string().min(1, "Name is required"),
     email: z.string().email("Invalid email address"),
+    category: z.string().default("Other"),
     message: z.string().min(1, "Message is required"),
 });
 

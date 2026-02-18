@@ -28,13 +28,21 @@ export function useContactForm() {
 
   return useMutation({
     mutationFn: async (data: InsertMessage) => {
-      // Simulate API delay
-      await new Promise((resolve) => setTimeout(resolve, 1000));
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
 
-      // Log message to console since there's no backend
-      console.log("Contact form submission (local):", data);
+      const result = await response.json();
 
-      return { success: true, message: "Thank you! Your message has been received (simulated)." };
+      if (!response.ok) {
+        throw new Error(result.message || "Something went wrong. Please try again later.");
+      }
+
+      return result;
     },
     onSuccess: (data) => {
       toast({

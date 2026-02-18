@@ -1,6 +1,13 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node';
 import nodemailer from 'nodemailer';
-import { insertMessageSchema } from '../src/lib/schema';
+import { z } from 'zod';
+
+// Inline schema to avoid deployment import issues
+const insertMessageSchema = z.object({
+    name: z.string().min(1, "Name is required"),
+    email: z.string().email("Invalid email address"),
+    message: z.string().min(1, "Message is required"),
+});
 
 export default async function handler(
     req: VercelRequest,

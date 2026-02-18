@@ -36,7 +36,15 @@ export function useContactForm() {
         body: JSON.stringify(data),
       });
 
-      const result = await response.json();
+      let result;
+      const text = await response.text();
+
+      try {
+        result = JSON.parse(text);
+      } catch (e) {
+        console.error("Failed to parse API response as JSON:", text);
+        throw new Error("Server returned an invalid response. Please check your connection or try again later.");
+      }
 
       if (!response.ok) {
         throw new Error(result.message || "Something went wrong. Please try again later.");

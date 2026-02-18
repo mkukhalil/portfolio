@@ -14,12 +14,10 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Loader2 } from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";
-import { useState } from "react";
+import { motion } from "framer-motion";
 
 export function ContactForm() {
   const { mutate, isPending } = useContactForm();
-  const [feedback, setFeedback] = useState<{ type: "success" | "error"; message: string } | null>(null);
 
   const form = useForm<InsertMessage>({
     resolver: zodResolver(insertMessageSchema),
@@ -33,16 +31,11 @@ export function ContactForm() {
 
   function onSubmit(data: InsertMessage) {
     mutate(data, {
-      onSuccess: (res) => {
+      onSuccess: () => {
         form.reset();
-        setFeedback({ type: "success", message: res.message });
         setTimeout(() => {
-          setFeedback(null);
           form.setFocus("name");
-        }, 3000);
-      },
-      onError: (err: Error) => {
-        setFeedback({ type: "error", message: err.message });
+        }, 100);
       },
     });
   }
@@ -58,21 +51,6 @@ export function ContactForm() {
     >
       <div className="bg-[#071C29] backdrop-blur-sm border border-white/10 rounded-2xl p-6 md:p-8 shadow-2xl relative overflow-hidden">
         <h3 className="text-2xl font-display font-bold mb-4 text-center">Get In Touch</h3>
-
-        <AnimatePresence>
-          {feedback && (
-            <motion.div
-              key={feedback.message}
-              initial={{ opacity: 0, y: -10 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -10 }}
-              className={`absolute top-4 left-1/2 -translate-x-1/2 w-[90%] p-3 rounded-md text-center font-medium z-10 ${feedback.type === "success" ? "bg-green-500 text-white" : "bg-red-500 text-white"
-                }`}
-            >
-              {feedback.message}
-            </motion.div>
-          )}
-        </AnimatePresence>
 
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-2">

@@ -26,6 +26,10 @@
 
   --radius: 0.6rem;
 
+  --destructive: 0 84.2% 60.2%;
+  --destructive-foreground: 210 40% 98%;
+  --destructive-border: 0 84.2% 50.2%;
+
   --font-sans: 'Inter', sans-serif;
   --font-display: 'Space Grotesk', sans-serif;
 }

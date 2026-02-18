@@ -73,7 +73,7 @@ export function SkillsSection() {
         <div className="relative w-full overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)]">
           <div
             ref={scrollRef}
-            className="flex gap-8 overflow-x-auto pb-8 no-scrollbar touch-pan-x cursor-grab active:cursor-grabbing"
+            className="flex gap-8 overflow-x-auto py-4 no-scrollbar touch-pan-x cursor-grab active:cursor-grabbing"
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
             onTouchStart={() => setIsHovered(true)}

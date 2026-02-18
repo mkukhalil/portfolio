@@ -151,13 +151,18 @@
   width: 60vw;
 }
 
+.contaainer {
+  background-color: #0D151C;
+}
+
 /* ===== About Section Curve (Responsive, Non-Distorted) ===== */
 .about-curve {
   overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
-  transform: translateY(5rem); /* matches previous translate-y-20 */
+  transform: translateY(5rem);
+  /* matches previous translate-y-20 */
 }
 
 .about-curve__frame {

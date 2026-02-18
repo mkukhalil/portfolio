@@ -36,11 +36,11 @@ export function ContactForm() {
       viewport={{ once: true }}
       className="w-full max-w-md mx-auto"
     >
-      <div className="bg-card/50 backdrop-blur-sm border border-white/10 rounded-2xl p-8 shadow-2xl">
-        <h3 className="text-2xl font-display font-bold mb-6 text-center">Get In Touch</h3>
+      <div className="bg-[#071C29] backdrop-blur-sm border border-white/10 rounded-2xl p-6 md:p-8 shadow-2xl">
+        <h3 className="text-2xl font-display font-bold mb-4 text-center">Get In Touch</h3>
 
         <Form {...form}>
-          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
             <FormField
               control={form.control}
               name="name"
@@ -50,7 +50,7 @@ export function ContactForm() {
                   <FormControl>
                     <Input
                       placeholder="Your name"
-                      className="bg-background/50 border-white/10 focus:border-primary/50 transition-colors"
+                      className="bg-[#071C29] border-white/50 focus:border-white transition-colors"
                       {...field}
                     />
                   </FormControl>
@@ -68,7 +68,7 @@ export function ContactForm() {
                   <FormControl>
                     <Input
                       placeholder="hello@example.com"
-                      className="bg-background/50 border-white/10 focus:border-primary/50 transition-colors"
+                      className="bg-[#071C29] border-white/50 focus:border-white transition-colors"
                       {...field}
                     />
                   </FormControl>
@@ -86,7 +86,7 @@ export function ContactForm() {
                   <FormControl>
                     <Textarea
                       placeholder="Tell me about your project..."
-                      className="min-h-[120px] bg-background/50 border-white/10 focus:border-primary/50 transition-colors"
+                      className="min-h-[100px] bg-[#071C29] border-white/50 focus:border-white transition-colors"
                       {...field}
                     />
                   </FormControl>
@@ -95,23 +95,22 @@ export function ContactForm() {
               )}
             />
 
-            <Button
-              type="submit"
-              className="w-full bg-primary text-primary-foreground hover:bg-primary/90 transition-all font-semibold"
-              disabled={isPending}
-            >
-              {isPending ? (
-                <>
-                  <Loader2 className="w-4 h-4 mr-2 animate-spin" />
-                  Sending...
-                </>
-              ) : (
-                <>
-                  <Send className="w-4 h-4 mr-2" />
-                  Send Message
-                </>
-              )}
-            </Button>
+            <div className="flex justify-end">
+              <Button
+                type="submit"
+                className="w-fit px-3 bg-white text-black hover:bg-white/90 transition-all font-semibold"
+                disabled={isPending}
+              >
+                {isPending ? (
+                  <>
+                    <Loader2 className="w-4 h-4 mr-2 animate-spin" />
+                    Sending...
+                  </>
+                ) : (
+                  "Send Message"
+                )}
+              </Button>
+            </div>
           </form>
         </Form>
       </div>

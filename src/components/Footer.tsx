@@ -2,10 +2,30 @@ import { motion } from "framer-motion";
 import { FaFacebook, FaLinkedin, FaInstagram, FaXTwitter } from "react-icons/fa6";
 
 const socialLinks = [
-    { icon: FaFacebook, href: "#", color: "text-blue-500" },
-    { icon: FaXTwitter, href: "#", color: "text-white" },
-    { icon: FaLinkedin, href: "#", color: "text-blue-400" },
-    { icon: FaInstagram, href: "#", color: "text-pink-500" },
+    {
+        icon: FaFacebook,
+        href: "#",
+        color: "#1877F2", // Official Facebook Blue
+        glow: "rgba(24, 119, 242, 0.5)"
+    },
+    {
+        icon: FaXTwitter,
+        href: "#",
+        color: "#FFFFFF", // Official X White
+        glow: "rgba(255, 255, 255, 0.3)"
+    },
+    {
+        icon: FaLinkedin,
+        href: "#",
+        color: "#0A66C2", // Official LinkedIn Blue
+        glow: "rgba(10, 102, 194, 0.5)"
+    },
+    {
+        icon: FaInstagram,
+        href: "#",
+        color: "url(#instagram-gradient)", // Use SVG gradient
+        glow: "rgba(225, 48, 108, 0.5)"
+    },
 ];
 
 export function Footer() {
@@ -35,6 +55,14 @@ export function Footer() {
                                 <feMergeNode in="SourceGraphic" />
                             </feMerge>
                         </filter>
+
+                        <linearGradient id="instagram-gradient" x1="0%" y1="100%" x2="100%" y2="0%">
+                            <stop offset="0%" style={{ stopColor: "#f09433" }} />
+                            <stop offset="25%" style={{ stopColor: "#e6683c" }} />
+                            <stop offset="50%" style={{ stopColor: "#dc2743" }} />
+                            <stop offset="75%" style={{ stopColor: "#cc2366" }} />
+                            <stop offset="100%" style={{ stopColor: "#bc1888" }} />
+                        </linearGradient>
                     </defs>
 
                     {/* Outer Perfect Half Circle */}
@@ -60,7 +88,7 @@ export function Footer() {
                     />
                 </svg>
             </div>
-            <div className="container mx-auto relative z-10 flex flex-col items-center gap-8 text-center mt-auto">
+            <div className="container mx-auto relative z-10 flex flex-col items-center gap-4 text-center mt-auto">
 
                 {/* Name */}
                 <motion.h2
@@ -78,17 +106,28 @@ export function Footer() {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ delay: 0.1 }}
-                    className="flex items-center gap-4"
+                    className="flex items-center gap-2"
                 >
                     {socialLinks.map((social, index) => (
-                        <a
+                        <motion.a
                             key={index}
                             href={social.href}
-                            className={`p-3 rounded-full bg-white/5 border border-white/10 transition-all duration-300 hover:scale-110 hover:bg-white/10 ${social.color}`}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="relative group p-2 rounded-full bg-white/5 border border-white/10 transition-all duration-300 flex items-center justify-center overflow-hidden"
+                            whileHover={{
+                                scale: 1.15,
+                                backgroundColor: "rgba(255, 255, 255, 0.1)",
+                                boxShadow: `0 0 20px ${social.glow}`
+                            }}
                             aria-label="Social Link"
                         >
-                            <social.icon size={20} />
-                        </a>
+                            <social.icon
+                                size={22}
+                                style={{ fill: social.color }}
+                                className="transition-transform duration-300 group-hover:scale-110"
+                            />
+                        </motion.a>
                     ))}
                 </motion.div>
 
@@ -98,7 +137,7 @@ export function Footer() {
                     whileInView={{ opacity: 1 }}
                     viewport={{ once: true }}
                     transition={{ delay: 0.2 }}
-                    className="text-xs md:text-sm text-muted-foreground/60 mt-4"
+                    className="text-xs md:text-sm text-muted-foreground"
                 >
                     © {new Date().getFullYear()} Khalil. All rights reserved.
                 </motion.p>
